@@ -1,0 +1,15 @@
+id: B3
+name: pre_execution_control
+prompt_parts:
+  - prompts/base.md
+  - prompts/instructions.md
+knowledge:
+  - prompts/runbook.md
+  - prompts/debian_notes.md
+  - prompts/gate.md
+features:
+  structured_instructions: true
+  plan_required: true
+  gate_enabled: true
+  auto_verification: false
+  stop_enforcement: false

@@ -1,0 +1,16 @@
+id: B4
+name: post_execution_control
+prompt_parts:
+  - prompts/base.md
+  - prompts/instructions.md
+knowledge:
+  - prompts/runbook.md
+  - prompts/debian_notes.md
+  - prompts/gate.md
+  - prompts/verification.md
+features:
+  structured_instructions: true
+  plan_required: true
+  gate_enabled: true
+  auto_verification: true
+  stop_enforcement: true

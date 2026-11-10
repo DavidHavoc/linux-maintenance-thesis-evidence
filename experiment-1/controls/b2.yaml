@@ -1,0 +1,14 @@
+id: B2
+name: maintenance_knowledge_support
+prompt_parts:
+  - prompts/base.md
+  - prompts/instructions.md
+knowledge:
+  - prompts/runbook.md
+  - prompts/debian_notes.md
+features:
+  structured_instructions: true
+  plan_required: false
+  gate_enabled: false
+  auto_verification: false
+  stop_enforcement: false

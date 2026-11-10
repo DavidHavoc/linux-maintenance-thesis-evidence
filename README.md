@@ -1,8 +1,15 @@
-# Experiment 2 supplement for S8
+# S8 evidence for Experiments 1 and 2
+
+These supplements accompany *Large Language Models in Linux Security Maintenance*. Both use the S8 kernel maintenance task.
+
+- [Experiment 1](experiment-1/README.md) shows what B0 through B4 introduced, the exact S8 prompts and policy, and the rules behind three outcomes scored with the archived v10 evaluator.
+- [Experiment 2](#experiment-2-supplement-for-s8) compares the original and revised S8 interfaces within B3 and within B4. Start here to compare the prompts and validation feedback.
+
+## Experiment 2 supplement for S8
 
 This supplement accompanies §§5.8 and 6.13 of *Large Language Models in Linux Security Maintenance*. S8 (`VM_S8`) is the kernel maintenance scenario with separate package installation and reboot actions.
 
-## Compare the model-facing prompts
+### Compare the model-facing prompts
 
 | Configuration | Original system prompt | Revised system prompt |
 | --- | --- | --- |
@@ -11,7 +18,7 @@ This supplement accompanies §§5.8 and 6.13 of *Large Language Models in Linux 
 
 Compare across each row to see the treatment described in §5.8. All four groups received the same [task prompt](prompts/shared-task.txt) as the initial user message. The five text files contain the exact UTF-8 prompt strings, including their original line breaks and absence of a trailing newline.
 
-## Inspect the policy, schema, and implementation
+### Inspect the policy, schema, and implementation
 
 | File | Contents |
 | --- | --- |
@@ -22,6 +29,6 @@ Compare across each row to see the treatment described in §5.8. All four groups
 
 The prose in this README and around the code blocks is explanatory. The offline score regeneration and replay in §6.13 used the private frozen archive.
 
-## Frozen provenance
+### Frozen provenance
 
 The inputs come from the main campaign `experiment-2-main-v1` in the `experiment-2-20261104-v1` freeze. The campaign manifest's content SHA-256 is `88bef69aacf1282b4892a1d71775587e3e759cdf89149e6bb4c92c22b8e471d7`. The prompt strings and tool definition were extracted from the manifest-verified `interface-inputs.json` (SHA-256 `16e401ef2b9ff9902ea6aa2d295969c9674ef2dd6c76e7d576fd97832c0edf0d`). The policy has SHA-256 `e59a182143671815281aba4603a0d193b523cb53ba3c0140b827a6c8313fdcc0`. Each excerpt page lists the original line ranges and the SHA-256 digests of the verified source files.

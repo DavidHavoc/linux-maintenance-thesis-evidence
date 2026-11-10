@@ -1,0 +1,11 @@
+id: B0
+name: minimal_control_baseline
+prompt_parts:
+  - prompts/base.md
+knowledge: []
+features:
+  structured_instructions: false
+  plan_required: false
+  gate_enabled: false
+  auto_verification: false
+  stop_enforcement: false

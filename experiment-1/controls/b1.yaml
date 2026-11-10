@@ -1,0 +1,12 @@
+id: B1
+name: structured_maintenance_instructions
+prompt_parts:
+  - prompts/base.md
+  - prompts/instructions.md
+knowledge: []
+features:
+  structured_instructions: true
+  plan_required: false
+  gate_enabled: false
+  auto_verification: false
+  stop_enforcement: false
