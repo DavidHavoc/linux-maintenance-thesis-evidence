@@ -1,0 +1,207 @@
+{
+  "type": "function",
+  "function": {
+    "name": "submit_decision",
+    "description": "Record INITIAL before maintenance, REVISED after reconsideration, or FINAL to close.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "checkpoint": {
+          "type": "string",
+          "enum": [
+            "INITIAL",
+            "REVISED",
+            "FINAL"
+          ]
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "PATCH",
+            "DEFER",
+            "REJECT",
+            "INVESTIGATE"
+          ]
+        },
+        "action": {
+          "anyOf": [
+            {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "apply_package_updates"
+                      ]
+                    },
+                    "arguments": {
+                      "type": "object",
+                      "properties": {
+                        "packages": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9][a-z0-9.+-]*$"
+                          },
+                          "minItems": 1,
+                          "uniqueItems": true
+                        }
+                      },
+                      "required": [
+                        "packages"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "arguments"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "restart_service"
+                      ]
+                    },
+                    "arguments": {
+                      "type": "object",
+                      "properties": {
+                        "unit": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9@._\\-]*$"
+                        }
+                      },
+                      "required": [
+                        "unit"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "arguments"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "reboot_guest"
+                      ]
+                    },
+                    "arguments": {
+                      "type": "object",
+                      "properties": {},
+                      "required": [],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "arguments"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "snapshot_required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "reboot_required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "completion_claim": {
+          "type": "string",
+          "enum": [
+            "NOT_ATTEMPTED",
+            "SUCCESS",
+            "FAILURE",
+            "UNKNOWN"
+          ]
+        },
+        "failure_codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "rollback_recommended": {
+          "type": "boolean"
+        },
+        "escalation_requested": {
+          "type": "boolean"
+        },
+        "justification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "snapshot_reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "POLICY_REQUIRED",
+            "NO_MAINTENANCE",
+            "UNKNOWN",
+            null
+          ]
+        }
+      },
+      "required": [
+        "checkpoint",
+        "decision",
+        "action",
+        "evidence_refs",
+        "blockers",
+        "snapshot_required",
+        "reboot_required",
+        "completion_claim",
+        "failure_codes",
+        "rollback_recommended",
+        "escalation_requested",
+        "justification"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
