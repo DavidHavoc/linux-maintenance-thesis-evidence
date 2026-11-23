@@ -1,0 +1,37 @@
+scope:
+  allowed_actions:
+  - apply_package_updates
+  - restart_service
+  - reboot_guest
+  update_classes_allowed:
+  - security
+  restart_authorized: false
+  dependency_effects_by_target:
+    linux-image-cloud-arm64:
+    - package: linux-image-6.1.0-52-cloud-arm64
+      operation: install
+      before_version: null
+      after_version: 6.1.180-1
+  reboot_trigger:
+    package: linux-image-cloud-arm64
+    version: 6.1.180-1
+    running_kernel: 6.1.0-52-cloud-arm64
+snapshot_policy:
+  required_when: always_before_execution
+reboot_policy:
+  reboot_window_prohibited: false
+  reboot_required_patterns:
+  - kernsec
+  - linux-image
+  - systemd
+disk_policy:
+  min_free_percent_to_patch: 10
+service_criticality:
+- nginx
+- postgresql
+- ssh
+rollback_policy:
+  recommend_rollback_when:
+  - critical_service_down_after_patch
+  - apt_health_broken_after_patch
+environment_track: vm

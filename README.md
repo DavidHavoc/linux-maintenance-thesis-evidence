@@ -1,7 +1,9 @@
-# S8 evidence for Experiments 1 and 2
+# Linux security maintenance thesis evidence
 
-These supplements accompany *Large Language Models in Linux Security Maintenance*. Both use the S8 kernel maintenance task.
+These supplements accompany *Large Language Models in Linux Security Maintenance*. The selected-trial export covers all eight scenarios in both experiments. The interface exhibits focus on S8, the kernel maintenance task.
 
+- [Selected-trial evidence](review-revision/README.md) contains the data for 360 selected main trials, the data dictionary, accounting and the aggregation check.
+- [S8 offline audit](s8-offline-audit.json) records the comparison between scoring versions and the replay of four post-approval reboot refusals.
 - [Experiment 1](experiment-1/README.md) shows what B0 through B4 introduced, the exact S8 prompts and policy, and the rules behind three outcomes scored with the archived v10 evaluator.
 - [Experiment 2](#experiment-2-supplement-for-s8) compares the original and revised S8 interfaces within B3 and within B4. Start here to compare the prompts and validation feedback.
 
